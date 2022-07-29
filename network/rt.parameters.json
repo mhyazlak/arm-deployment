@@ -1,0 +1,80 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "routeTableName": {
+            "value": "landingzone-routeTable"
+        },
+       "routes":{
+        "value": [
+            
+                {
+                    "name": "Connectivity-default-gw",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "0.0.0.0/0",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "10.153.0.68"
+                    },
+                    "type": "Microsoft.Network/routeTables/routes"
+                },
+                {
+                    "name": "FW-DNS-1",
+               
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "10.153.0.69/32",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "10.153.0.69"
+                    },
+                    "type": "Microsoft.Network/routeTables/routes"
+                },
+                {
+                    "name": "FW-DNS-2",
+           
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "10.153.0.70/32",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "10.153.0.70"
+                    },
+                    "type": "Microsoft.Network/routeTables/routes"
+                },
+                {
+                    "name": "connectivity-vnet",
+                   
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "10.153.0.0/22",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "10.153.0.68"
+                    },
+                    "type": "Microsoft.Network/routeTables/routes"
+                },
+                {
+                    "name": "Monitor",
+                  
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "AzureMonitor",
+                        "nextHopType": "Internet",
+                        "nextHopIpAddress": ""
+                    },
+                    "type": "Microsoft.Network/routeTables/routes"
+                },
+                {
+                    "name": "WindowsUpdates",
+              
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "AzureUpdateDelivery",
+                        "nextHopType": "Internet",
+                        "nextHopIpAddress": ""
+                    },
+                    "type": "Microsoft.Network/routeTables/routes"
+                }
+            
+        ]
+       }
+  }
+}
